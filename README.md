@@ -2,7 +2,7 @@
 
 An academic computer-vision project that detects vehicles in traffic video, tracks them across frames, counts line crossings, and produces simple traffic-flow analytics.
 
-> **Project history:** Original academic work from **2024**. This repository is a **2026 reconstruction/publication** based on the preserved project materials and earlier implementation artifacts. The reconstruction keeps the original problem and core idea while replacing brittle, hard-coded code with a small, testable pipeline.
+> **Project history:** Preserved academic material includes a report dated **October 2023**, while later YOLOv8 vehicle-flow implementation evidence dates to **November 2024**. This repository is a **2026 reconstruction/publication** based on those preserved materials and implementation artifacts. The reconstruction keeps the original problem and core idea while replacing brittle, hard-coded code with a small, testable pipeline.
 
 ## What it does
 
@@ -52,8 +52,8 @@ The source audit found that the older code mixed several experimental approaches
 
 ## Project chronology
 
-- **2024:** Original academic project and experiments
-- **November 2024:** YOLOv8 vehicle-flow implementation produced local analytics artifacts
+- **October 2023:** Preserved academic project report
+- **November 2024:** YOLOv8 vehicle-flow implementation and local analytics artifacts
 - **2026:** Reconstruction for a clean, public-safe GitHub repository
 
 ## Team
@@ -206,3 +206,9 @@ Possible future work, only when justified:
 - lane-level analysis
 - calibrated traffic-density estimation
 - benchmarked inference speed on local GPU/CPU
+
+## License
+
+This repository is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+
+Ultralytics YOLO is a third-party dependency and is subject to its applicable license terms. See the Ultralytics licensing documentation for details.

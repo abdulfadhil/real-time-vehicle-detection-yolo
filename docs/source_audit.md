@@ -2,9 +2,9 @@
 
 This document records what was found in the preserved project material before the 2026 reconstruction.
 
-## 1. 2024 presentation
+## 1. Preserved academic material
 
-The academic presentation titled **Object Detection Using AI and ML** describes:
+The preserved academic material includes a project report dated **October 2023** and describes:
 
 - detection of cars, trucks, bikes and people from video streams
 - real-time processing as a goal
