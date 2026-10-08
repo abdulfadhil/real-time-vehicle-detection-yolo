@@ -10,10 +10,10 @@ An academic computer-vision project that detects vehicles in traffic video, trac
 - Tracks vehicles across consecutive frames using ByteTrack
 - Counts unique vehicles crossing a configurable virtual line
 - Separates results by vehicle class
-- Records crossing events and interval analytics
+- Records individual crossing events
 - Saves an annotated output video
 - Writes machine-readable CSV and JSON results
-- Works with a video file and can be adapted to a webcam/stream
+- Supports video files and webcam input
 
 Vehicle classes currently used from the COCO model:
 
@@ -116,28 +116,29 @@ python -m pip install -r requirements.txt
 
 ## Model
 
-The project uses a YOLOv8 small detection model for continuity with the earlier implementation.
+The reconstruction uses Ultralytics YOLO for vehicle detection and ByteTrack for multi-object tracking.
+
+The current locally validated configuration uses:
+
+- YOLOv8n
+- image size: 320
+- confidence threshold: 0.35
 
 Place the model here:
 
 ```text
-models/yolov8s.pt
-```
-
-The model file is intentionally ignored by Git. Keep downloaded/model artifacts out of the repository unless licensing and repository-size requirements have been reviewed.
-
-See `models/README.md`.
+models/yolov8n.pt
 
 ## Run
 
 ```bash
-python run.py --source "path/to/video.mp4" --model "models/yolov8s.pt"
+python run.py --source "path/to/video.mp4" --model "models/yolov8n.pt"
 ```
 
 Useful options:
 
 ```bash
-python run.py   --source "path/to/video.mp4"   --model "models/yolov8s.pt"   --output-dir outputs   --confidence 0.35   --line-position 0.50   --imgsz 640
+python run.py   --source "path/to/video.mp4"   --model "models/yolov8n.pt"   --output-dir outputs   --confidence 0.35   --line-position 0.50   --imgsz 320
 ```
 
 Press `q` during display mode to stop early.
@@ -161,7 +162,27 @@ python -m pytest -q
 
 A video smoke test checks that the source can be opened and basic frame metadata can be read without running the model.
 
-## Important boundary
+## Validation status
+
+The current reconstruction has been validated end-to-end on a controlled 640x360, 10-second sample video using YOLOv8n with image size 320 and confidence 0.35.
+
+Observed sample result:
+
+- 300/300 frames processed
+- 15 line-crossing events
+- 13 cars
+- 1 bus
+- 1 truck
+- annotated video generated
+- crossing-events CSV generated
+- summary JSON generated
+
+These values are sample-run results for the current reconstruction, not model accuracy metrics.
+
+The original 1920x1080 traffic video is approximately 5 minutes 6 seconds / 9,184 frames. Full-resolution processing was not completed end-to-end on the development laptop and is therefore not presented as a completed benchmark.
+
+Real-time performance depends on hardware, input resolution, model size, confidence threshold, image size, and tracking configuration.
+
 
 This repository does **not** claim:
 
