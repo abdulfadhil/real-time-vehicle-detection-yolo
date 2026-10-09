@@ -5,6 +5,9 @@ import pytest
 
 
 VIDEO_CANDIDATES = [
+    Path("traffic_sample.mp4"),
+    Path("traffic_30s.mp4"),
+    Path("traffic.mp4"),
     Path("tf.mp4"),
     Path("data/raw/tf.mp4"),
 ]
