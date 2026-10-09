@@ -92,6 +92,20 @@ real-time-vehicle-detection-yolo/
     └── test_video_io.py
 ```
 
+## What is included
+
+This repository includes the public-safe project work:
+
+- cleaned detection and counting pipeline
+- line-crossing counter logic
+- command-line runner
+- automated tests
+- source audit
+- validation notes
+- setup and model instructions
+
+It intentionally does not include local virtual environments, model weight files, traffic videos or generated output videos. Those files are large, machine-specific or may have separate licensing and privacy considerations. The repository documents how to add permitted model and video files locally.
+
 ## Setup
 
 Python 3.10+ is recommended.
