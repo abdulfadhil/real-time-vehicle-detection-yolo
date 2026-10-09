@@ -4,7 +4,7 @@ This document records what was found in the preserved project material before th
 
 ## 1. Preserved academic material
 
-The preserved academic material includes a project report dated **October 2023** and describes:
+The preserved academic material includes a report file dated **October 2023**. The project is still treated as a **2024 academic object-detection project**; the 2023 date is preserved as source evidence, not used as the public project year. The preserved material describes:
 
 - detection of cars, trucks, bikes and people from video streams
 - real-time processing as a goal

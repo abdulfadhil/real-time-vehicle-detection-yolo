@@ -2,7 +2,7 @@
 
 An academic computer-vision project that detects vehicles in traffic video, tracks them across frames, counts line crossings, and produces simple traffic-flow analytics.
 
-> **Project history:** Preserved academic material includes a report dated **October 2023**, while later YOLOv8 vehicle-flow implementation evidence dates to **November 2024**. This repository is a **2026 reconstruction/publication** based on those preserved materials and implementation artifacts. The reconstruction keeps the original problem and core idea while replacing brittle, hard-coded code with a small, testable pipeline.
+> **Project history:** This is treated as a **2024 academic object-detection project**. The preserved source material includes an older report file dated **October 2023**, and later YOLOv8 vehicle-flow implementation evidence dates to **November 2024**. This repository is a **2026 reconstruction/publication** based on preserved materials and implementation artifacts. The reconstruction keeps the original problem and core idea while replacing brittle, hard-coded code with a small, testable pipeline.
 
 ## What it does
 
@@ -52,7 +52,8 @@ The source audit found that the older code mixed several experimental approaches
 
 ## Project chronology
 
-- **October 2023:** Preserved academic project report
+- **2024:** Academic object-detection / vehicle-detection project chronology
+- **October 2023:** Date found in a preserved report file, kept as source evidence rather than the public project year
 - **November 2024:** YOLOv8 vehicle-flow implementation and local analytics artifacts
 - **2026:** Reconstruction for a clean, public-safe GitHub repository
 
