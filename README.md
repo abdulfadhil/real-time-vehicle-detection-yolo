@@ -71,10 +71,12 @@ real-time-vehicle-detection-yolo/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
+├── pyproject.toml
 ├── requirements.txt
 ├── run.py
 ├── docs/
-│   └── source_audit.md
+│   ├── source_audit.md
+│   └── validation.md
 ├── models/
 │   └── README.md
 ├── outputs/
@@ -85,6 +87,7 @@ real-time-vehicle-detection-yolo/
 │       └── counter.py
 └── tests/
     ├── test_counter.py
+    ├── test_run.py
     └── test_video_io.py
 ```
 
