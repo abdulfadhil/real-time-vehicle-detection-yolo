@@ -31,3 +31,12 @@ outputs/*
 # OS
 .DS_Store
 Thumbs.db
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
