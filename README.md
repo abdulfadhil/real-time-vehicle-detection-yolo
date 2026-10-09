@@ -128,6 +128,7 @@ Place the model here:
 
 ```text
 models/yolov8n.pt
+```
 
 ## Run
 

@@ -9,7 +9,7 @@
 - End-to-end video processing completed on a controlled **640x360, 10-second sample**
 - Sample video processing completed: **300/300 frames**
 - Sample output included an annotated video, crossing-events CSV, and summary JSON
-- Source audit completed against preserved presentation, code, Git history, and historical analytics artifacts
+- Source audit completed against preserved project report, code, Git history, and historical analytics artifacts
 - Model files, input videos, generated outputs, and virtual-environment files are excluded from Git
 - No credentials, API keys, or private datasets were copied into the reconstructed repository
 
@@ -21,6 +21,7 @@ Image size: 320
 Confidence threshold: 0.35
 Input sample: 640x360, 10 seconds
 Frames processed: 300
+```
 
 These are sample-run event counts from the current reconstruction. They are not model accuracy, precision, recall, F1, or benchmark metrics.
 
