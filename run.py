@@ -25,18 +25,34 @@ COCO_VEHICLE_IDS = {
 }
 
 
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Detect, track and count vehicles crossing a virtual line."
     )
     parser.add_argument("--source", required=True, help="Video path or webcam index.")
-    parser.add_argument("--model", required=True, help="YOLO model path, e.g. models/yolov8s.pt")
+    parser.add_argument("--model", required=True, help="YOLO model path, e.g. models/yolov8n.pt")
     parser.add_argument("--output-dir", default="outputs")
     parser.add_argument("--confidence", type=float, default=0.35)
     parser.add_argument("--imgsz", type=int, default=640)
     parser.add_argument("--line-position", type=float, default=0.50)
     parser.add_argument("--display", action="store_true")
-    return parser.parse_args()
+
+    args = parser.parse_args()
+
+    if not 0.0 < args.confidence <= 1.0:
+        parser.error("--confidence must be greater than 0 and at most 1.")
+
+    if args.imgsz <= 0:
+        parser.error("--imgsz must be a positive integer.")
+
+    if not 0.0 <= args.line_position <= 1.0:
+        parser.error("--line-position must be between 0 and 1, inclusive.")
+
+    return args
+
+
+
 
 
 def as_capture_source(value: str):
