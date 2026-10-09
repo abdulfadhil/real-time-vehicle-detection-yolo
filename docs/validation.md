@@ -3,7 +3,7 @@
 ## Completed in the development environment
 
 - Python environment created and dependencies installed successfully
-- `pytest` clean run: **5 passed, 1 skipped**
+- `pytest` clean run: **6 passed, 1 skipped**
 - Vehicle-counting regression tests cover direction A, direction B, duplicate counting prevention, non-vehicle filtering, and independent vehicle classes
 - YOLOv8n model loaded successfully from `models/yolov8n.pt`
 - End-to-end video processing completed on a controlled **640x360, 10-second sample**
