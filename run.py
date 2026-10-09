@@ -82,7 +82,13 @@ def main() -> int:
     fps = cap.get(cv2.CAP_PROP_FPS) or 25.0
 
     line_y = int(height * args.line_position)
-    model = YOLO(args.model)
+
+    try:
+        model = YOLO(args.model)
+    except Exception:
+        cap.release()
+        raise
+
     counter = LineCrossingCounter(line_y=line_y)
 
     output_video = output_dir / "annotated.mp4"
