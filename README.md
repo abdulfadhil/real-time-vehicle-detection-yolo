@@ -187,7 +187,6 @@ The original 1920x1080 traffic video is approximately 5 minutes 6 seconds / 9,18
 
 Real-time performance depends on hardware, input resolution, model size, confidence threshold, image size, and tracking configuration.
 
-
 This repository does **not** claim:
 
 - a newly trained custom YOLO model
