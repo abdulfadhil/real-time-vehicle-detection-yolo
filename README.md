@@ -97,11 +97,13 @@ See [`models/README.md`](models/README.md) for model setup instructions.
 
 ## Run the Project
 
+To process a video file:
+
 ```bash
 python run.py --source "path/to/video.mp4" --model "models/yolov8n.pt"
 ```
 
-To use your default webcam, run:
+To use your default webcam:
 
 ```bash
 python run.py --source 0 --model "models/yolov8n.pt" --display
@@ -144,13 +146,9 @@ Current results depend on the input video, tracking behaviour, model configurati
 
 Potential improvements include region-of-interest filtering, speed estimation, lane-level analysis, custom model training, and performance benchmarking.
 
-## Team
+## Project Background
 
-Original academic project contributors:
-
-- Abdul Fadhil M
-- Aswin Kumar A
-- Bharathraj S
+Developed as a team project focused on vehicle detection, tracking, and traffic-flow analysis using computer vision.
 
 ## License
 
