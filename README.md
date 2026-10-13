@@ -1,79 +1,71 @@
-# Real-Time Vehicle Detection & Traffic Flow Analytics
+﻿# Vehicle Flow | YOLOv8 + ByteTrack
 
-A computer-vision project that detects vehicles in traffic videos, tracks their movement across frames, counts virtual line crossings, and exports traffic-flow results.
+Detect vehicles. Track movement. Count line crossings. Export the evidence.
+
+A Python computer-vision project for vehicle detection and traffic-flow analysis using YOLOv8, ByteTrack, and OpenCV.
+
+## Demo
+
+[**▶ Watch the annotated demo video**](outputs/sample_fixed/annotated.mp4)
+
+![Vehicle detection demo](docs/assets/vehicle-detection-demo.png)
+
+## Sample Results
+
+| Metric | Result |
+|---|---:|
+| Frames processed | 300 |
+| Resolution | 640 × 360 |
+| Video frame rate | 30 FPS |
+| Crossing events | 14 |
+| Cars | 13 |
+| Trucks | 1 |
+
+These are observed counts from the included sample run, not model-accuracy measurements.
+
+- [Annotated video](outputs/sample_fixed/annotated.mp4)
+- [Crossing events CSV](outputs/sample_fixed/crossing_events.csv)
+- [Run summary JSON](outputs/sample_fixed/summary.json)
+- [Validation details](docs/validation.md)
 
 ## Features
 
-- Vehicle detection using YOLOv8
-- Multi-object tracking with ByteTrack
-- Direction-based line-crossing counts
-- Vehicle classification for cars, motorcycles, buses, and trucks
+- YOLOv8 vehicle detection
+- ByteTrack multi-object tracking
+- Virtual line-crossing counts by direction
+- Vehicle labels and tracking IDs
 - Annotated video output
-- Crossing-event CSV and summary JSON exports
-- Video file and webcam input support
+- CSV events and JSON summaries
+- Video-file and webcam input
+- Configurable confidence, image size, and line position
 
-## How It Works
+## Pipeline
 
-**Video Input → YOLOv8 Detection → ByteTrack Tracking → Line-Crossing Detection → Traffic-Flow Results**
+**Video → Detection → Tracking → Line Crossing → Results**
 
-The system tracks vehicles across frames and records each tracked vehicle's first qualifying line-crossing event. It reports counts by vehicle class and direction.
+## Stack
 
-## Tech Stack
-
-- Python
-- Ultralytics YOLOv8
-- OpenCV
-- ByteTrack
-- NumPy
-- pytest
-
-## Project Structure
-
-```text
-real-time-vehicle-detection-yolo/
-├── .gitignore
-├── README.md
-├── LICENSE
-├── requirements.txt
-├── pyproject.toml
-├── run.py
-├── docs/
-│   └── validation.md
-├── models/
-│   └── README.md
-├── outputs/
-│   └── .gitkeep
-├── src/
-│   └── vehicle_flow/
-│       ├── __init__.py
-│       └── counter.py
-└── tests/
-    ├── test_counter.py
-    ├── test_run.py
-    └── test_video_io.py
-```
-
-## Requirements
-
-- Python 3.10 or newer
-- A compatible YOLOv8 model weight file
-- Video input or a webcam
+Python · Ultralytics YOLOv8 · ByteTrack · OpenCV · NumPy · pytest
 
 ## Setup
 
-Create and activate a virtual environment.
+Requires Python 3.10+ and compatible YOLO model weights.
+
+```bash
+git clone https://github.com/abdulfadhil/real-time-vehicle-detection-yolo.git
+cd real-time-vehicle-detection-yolo
+python -m venv .venv
+```
+
+Activate the environment:
 
 **Windows PowerShell**
-
 ```powershell
-python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
 **Linux/macOS**
-
 ```bash
-python -m venv .venv
 source .venv/bin/activate
 ```
 
@@ -83,75 +75,72 @@ Install dependencies:
 python -m pip install -r requirements.txt
 ```
 
-## Model Setup
+## Model
 
-The tested configuration used YOLOv8n with an image size of 320 and a confidence threshold of 0.35. The default image size is 640.
+Model weights are not included. Obtain weights you are permitted to use and follow [`models/README.md`](models/README.md).
 
-Place the permitted model weights at:
+Example model path: `models/yolov8n.pt`
 
-```text
-models/yolov8n.pt
-```
+## Run
 
-See [`models/README.md`](models/README.md) for model setup instructions.
-
-## Run the Project
-
-To process a video file:
+Process a video:
 
 ```bash
-python run.py --source "path/to/video.mp4" --model "models/yolov8n.pt"
+python run.py --source "path/to/video.mp4" --model "models/yolov8n.pt" --imgsz 320 --confidence 0.35
 ```
 
-To use your default webcam:
+Use a webcam:
 
 ```bash
 python run.py --source 0 --model "models/yolov8n.pt" --display
 ```
 
-By default, the application writes its results to `outputs/`:
+Useful options:
 
-- `annotated.mp4` — video with detections and tracking information
-- `crossing_events.csv` — individual crossing events
-- `summary.json` — aggregated counts
+- `--output-dir`: output folder; default `outputs`
+- `--imgsz`: inference image size; default `640`
+- `--confidence`: confidence threshold; default `0.35`
+- `--line-position`: counting-line position from `0` to `1`; default `0.50`
+- `--display`: show processed frames; press `q` to stop
 
-Press `q` during display mode to stop processing early.
+Each run generates an annotated video, a crossing-event CSV, and a JSON summary in the output directory.
 
-## Testing
-
-Run the automated tests with:
+## Tests
 
 ```bash
 python -m pytest -q
 ```
 
-The current test suite contains seven tests covering counting logic, runner error handling, and video input handling.
+The test suite covers counting logic, runner behaviour, and video input handling.
 
-## Validation
+## Limitations
 
-The pipeline was tested on a controlled 10-second video at 640 × 360 resolution.
+Counts depend on the footage, detections, tracking, model, and line placement. The sample does not establish precision, recall, F1-score, ground-truth accuracy, or real-time performance. The system counts virtual line crossings; it does not measure calibrated physical traffic density.
 
-- Frames processed: 300/300
-- Line-crossing events: 15
-- Cars: 13
-- Buses: 1
-- Trucks: 1
-- Generated outputs: annotated video, CSV, and JSON
+## Project Structure
 
-The full-resolution traffic video was not processed end-to-end. These sample results demonstrate pipeline execution; they do not establish model accuracy, precision, recall, F1-score, or real-time performance.
+```text
+docs/
+  assets/vehicle-detection-demo.png
+  validation.md
+models/README.md
+outputs/sample_fixed/
+  annotated.mp4
+  crossing_events.csv
+  summary.json
+src/vehicle_flow/
+tests/
+run.py
+requirements.txt
+pyproject.toml
+LICENSE
+README.md
+```
 
-## Limitations and Future Work
+## Background
 
-Current results depend on the input video, tracking behaviour, model configuration, and available hardware. The system provides line-crossing analytics rather than calibrated physical traffic-density measurements.
-
-Potential improvements include region-of-interest filtering, speed estimation, lane-level analysis, custom model training, and performance benchmarking.
-
-## Project Background
-
-Developed as a team project focused on vehicle detection, tracking, and traffic-flow analysis using computer vision.
+Developed as a team project exploring vehicle detection, tracking, and traffic-flow analytics.
 
 ## License
 
-This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). See [`LICENSE`](LICENSE) for the full license text.
-
-Ultralytics YOLO is a third-party dependency subject to its applicable license terms.
+See [`LICENSE`](LICENSE) for the repository's license terms. Third-party libraries and model weights are subject to their own applicable terms.

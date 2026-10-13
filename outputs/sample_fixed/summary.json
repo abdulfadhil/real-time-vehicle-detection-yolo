@@ -1,0 +1,32 @@
+{
+  "source": "traffic_sample.mp4",
+  "model": "models\\yolov8s.pt",
+  "frames_processed": 300,
+  "fps": 30.0,
+  "resolution": {
+    "width": 640,
+    "height": 360
+  },
+  "counting_line_y": 180,
+  "confidence_threshold": 0.35,
+  "image_size": 320,
+  "vehicle_classes": [
+    "bus",
+    "car",
+    "motorcycle",
+    "truck"
+  ],
+  "direction_a_total": 0,
+  "direction_b_total": 14,
+  "direction_a_by_class": {},
+  "direction_b_by_class": {
+    "car": 13,
+    "truck": 1
+  },
+  "events": 14,
+  "outputs": {
+    "annotated_video": "outputs\\sample_fixed\\annotated.mp4",
+    "crossing_events_csv": "outputs\\sample_fixed\\crossing_events.csv",
+    "summary_json": "outputs\\sample_fixed\\summary.json"
+  }
+}
